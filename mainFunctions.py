@@ -42,27 +42,7 @@ def addBooking():
                 enteredGuestNumber = handleInput("Please enter number of guests: ", "integer", [1,None], None) 
                 if(roomCapacity < enteredGuestNumber): 
                     print("Guest count exceeds room capacity of: {}".format(roomCapacity))
-                    # Optional for suggesting rooms, if it exceeds capacity of accomodation (S_1)
-                    accessableRooms = roomThatCanAccomodate(roomObjList,enteredGuestNumber)
-                    if(accessableRooms):
-                        print("Room(s) that can accomodate here can accomodate current group of {} guests : ".format(enteredGuestNumber))
-                        for i in accessableRooms:
-                            print(i,", ", end =" ")
-                        print("")
-                    else:
-                        print("No rooms here can accomodate current group {}".format(enteredGuestNumber))
-                        return
-                    # Optional for suggesting rooms, if it exceeds capacity of accomodation (E_1)
-                    while(True): #loop continues until user enters the room that has capacity to accomodate all guests
-                        enteredRoomNumber = handleInput("Please enter room number:", "integer", None, None)
-                        roomNumExists = listMatchedProperty(roomObjList,"roomNum", enteredRoomNumber) 
-                        if(roomNumExists):
-                            selectedRoomObj = roomObjList[roomNumExists[0]]  
-                            roomCapacity = getattr(selectedRoomObj,"roomCapacity")
-                            if(roomCapacity >= enteredGuestNumber): break
-                            else: print("Guest count exceeds room capacity of: {}".format(roomCapacity))
-                        else:  print("Room does not exist.")
-                break # this break statement gets program control out of nested while loop after room to accomodate all guest is found
+                else: break
             else: 
                 print("Room does not exist.")
         checkInMonth = handleInput("Please enter check-in month: ", "integer", [1,12], None)

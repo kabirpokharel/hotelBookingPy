@@ -10,10 +10,7 @@ def validateGuestId(guestObjList):
             print("Guest does not exist.")    
 
 def listMatchedProperty(objectList, propertyName, newPropertyValue):
-    # propertyList = []
     matchedPropertyList = []
-    # for i in objectList:  
-    #     propertyList.append(getattr(i,propertyName))
     for index, property in enumerate(objectList):
         if(newPropertyValue == getattr(property,propertyName)):
             matchedPropertyList.append(index)
@@ -65,12 +62,6 @@ def bookingAvailable(newChekinDay, newCheckoutDay, enteredRoomId,bookingObj):
                 return False
         return True
 
-def roomThatCanAccomodate(roomObjList,enteredGuestNumber):
-    roomThatCanContain = []
-    for property in roomObjList:
-        if(enteredGuestNumber <= getattr(property,"roomCapacity")):
-            roomThatCanContain.append(getattr(property,"roomNum"))
-    return roomThatCanContain
 
 def bookingDoNotOverlap(cin_new,cout_new,cin_old,cout_old):
     if((cin_new < cin_old and cout_new < cin_old) or (cin_new > cout_old and cout_new > cout_old)):
